@@ -11,12 +11,12 @@ require "csv"
 # Set variables
 #
 
-cn = ''
-$accountname = ''
-$passwd = ''
-$rest_key = ''
+cn = '' # enter your API server hostname
+$accountname = '' # enter your administrative account name
+$passwd = '' # enter your administrative account password
+$rest_key = '' # enter the API key 
 
-$ary = CSV.read("hogehoge.csv") # set a csv data file
+$ary = CSV.read("td7.csv") # set a csv data file
 $params = $ary.shift
 
 #
@@ -59,7 +59,9 @@ def uem_req(name, api_uri, bodydata)
 
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
-  http.start {|h| h.request(name) }
+  hentou = http.start {|h| h.request(name) }
+  
+  puts Time.new.to_s + " GID " + bodydata["GroupId"] + " "+ hentou.body
 
 end
 
@@ -87,7 +89,7 @@ end
 $ary.each do |iii|
 
   # Converting Parent values to an internal ID on the AirWatch DB...
-  api = 'https://as' + cn + '.awmdm.com/API/system/groups/search?groupid=' + iii[9]
+  api = 'https://' + cn + '/API/system/groups/search?groupid=' + iii[9]
 
   uem_req1('get_cogs','Get',api) { |res| 
 
@@ -97,7 +99,7 @@ $ary.each do |iii|
   parent_og = da[0]["Id"]["Value"]
   
   # Create a new OG by using post method...
-  api = 'https://as' + cn + '.awmdm.com/API/system/groups/' + parent_og.to_s
+  api = 'https://' + cn + '/API/system/groups/' + parent_og.to_s
 
   na = [$params, iii[0..8]].transpose
   bdt = Hash[*na.flatten]
