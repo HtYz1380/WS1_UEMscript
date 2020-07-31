@@ -1,22 +1,6 @@
 Name,GroupId,LocationGroupType,Country,Locale,AddDefaultLocation,Devices,EnableRestApiAccess,Timezone,Parent
-中村区役所駅,SKDH001,Container,Japan,ja-jp,TRUE,0,FALSE,13,OSKhoge
-名古屋駅,SKDH002,Container,Japan,ja-jp,TRUE,0,FALSE,13,OSKhoge
-国際センター駅,SKDH003,Container,Japan,ja-jp,TRUE,0,FALSE,13,OSKhoge
-丸の内駅,SKDH004,Container,Japan,ja-jp,TRUE,0,FALSE,13,OSKhoge
-久屋大通駅,SKDH005,Container,Japan,ja-jp,TRUE,0,FALSE,13,OSKhoge
-高岳駅,SKDH006,Container,Japan,ja-jp,TRUE,0,FALSE,13,FKShoge
-車道駅,SKDH007,Container,Japan,ja-jp,TRUE,0,FALSE,13,FKShoge
-今池駅,SKDH008,Container,Japan,ja-jp,TRUE,0,FALSE,13,FKShoge
-吹上駅,SKDH009,Container,Japan,ja-jp,TRUE,0,FALSE,13,FKShoge
-御器所駅,SKDH010,Container,Japan,ja-jp,TRUE,0,FALSE,13,FKShoge
-桜山駅,SKDH011,Container,Japan,ja-jp,TRUE,0,FALSE,13,FKShoge
-瑞穂区役所駅,SKDH012,Container,Japan,ja-jp,TRUE,0,FALSE,13,FKShoge
-瑞穂運動場西駅,SKDH013,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-新瑞橋駅,SKDH014,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-桜本町駅,SKDH015,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-鶴里駅 ,SKDH016,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-野並駅,SKDH017,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-鳴子北駅,SKDH018,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-相生山駅,SKDH019,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-神沢駅,SKDH020,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
-徳重駅,SKDH021,Container,Japan,ja-jp,TRUE,0,FALSE,13,NSKhoge
+Test,test20200731i,Container,Japan,ja-jp,TRUE,0,FALSE,13,82t
+iOS,iOS20200731i,Container,Japan,ja-jp,TRUE,0,FALSE,13,test20200731i
+Android,And20200731i,Container,Japan,ja-jp,TRUE,0,FALSE,13,test20200731i
+Windows,Win20200731i,Container,Japan,ja-jp,TRUE,0,FALSE,13,test20200731i
+mac,mac20200731i,Container,Japan,en-US,TRUE,0,FALSE,13,test20200731i
