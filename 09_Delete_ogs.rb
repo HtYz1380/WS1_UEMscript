@@ -1,4 +1,10 @@
-# 
+#### 
+# !!!!!!! Caution !!!!!!! 
+# This script can delete multiple Organization Groups !!!!
+# Be careful so that not delete your Organization Groups in production use !!!!
+####
+
+#
 # Requiring Liburaries..
 # 
 
