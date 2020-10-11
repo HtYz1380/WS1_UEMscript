@@ -99,17 +99,17 @@ res = http.request(req)
 ary = JSON.parse(res.body)
 
 ary = ary.reverse!
-iiii = 0
+numogs = 0
 
-while iiii < ary.length
+while numogs < ary.length
 
-  a = ary[iiii]["Id"]["Value"]
+  a = ary[numogs]["Id"]["Value"]
 
   api2 = 'https://' + cn + '/API/system/groups/'+ a.to_s
-  puts "Deleting #{ary[iiii]["Name"]}..."
+  puts "Deleting #{ary[numogs]["Name"]}..."
   uem_req2('del_cogs', api2)
 
-  iiii += 1
+  numogs += 1
 
 end  
 
