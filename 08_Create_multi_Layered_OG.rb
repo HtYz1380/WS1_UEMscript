@@ -11,7 +11,7 @@ require "csv"
 # Set variables
 #
 
-cn = '' # enter your API server hostname
+as = '' # enter your API server hostname
 $accountname = '' # enter your administrative account name
 $passwd = '' # enter your administrative account password
 $rest_key = '' # enter the API key 
@@ -89,7 +89,7 @@ end
 $ary.each do |newog|
 
   # Converting Parent values to an internal ID on the AirWatch DB...
-  api = 'https://' + cn + '/API/system/groups/search?groupid=' + newog[9]
+  api = 'https://' + as + '/API/system/groups/search?groupid=' + newog[9]
 
   src_org('get_cogs','Get',api) { |res| 
 
@@ -99,7 +99,7 @@ $ary.each do |newog|
   parent_og = da[0]["Id"]["Value"]
   
   # Create a new OG by using post method...
-  api = 'https://' + cn + '/API/system/groups/' + parent_og.to_s
+  api = 'https://' + as + '/API/system/groups/' + parent_og.to_s
 
   na = [$params, newog[0..8]].transpose
   bdt = Hash[*na.flatten]
