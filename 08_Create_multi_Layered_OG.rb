@@ -23,7 +23,7 @@ $params = $ary.shift
 # Method to search an Organization Group
 #
 
-def uem_req1(name ,meth, api_uri)
+def src_org(name ,meth, api_uri)
 
   uri = URI.parse(api_uri)
   http = Net::HTTP.new(uri.host, uri.port)
@@ -45,7 +45,7 @@ end
 # Method to create an Organiztion Group
 #
 
-def uem_req(name, api_uri, bodydata)
+def cre_org(name, api_uri, bodydata)
 
   uri = URI.parse(api_uri)
 
@@ -91,7 +91,7 @@ $ary.each do |iii|
   # Converting Parent values to an internal ID on the AirWatch DB...
   api = 'https://' + cn + '/API/system/groups/search?groupid=' + iii[9]
 
-  uem_req1('get_cogs','Get',api) { |res| 
+  src_org('get_cogs','Get',api) { |res| 
 
     hash = JSON.parse(res.body)
     da =  hash["LocationGroups"]
@@ -104,7 +104,7 @@ $ary.each do |iii|
   na = [$params, iii[0..8]].transpose
   bdt = Hash[*na.flatten]
 
-  uem_req('new_og', api, bdt)
+  cre_org('new_og', api, bdt)
   }
 
 end
