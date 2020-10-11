@@ -86,10 +86,10 @@ end
 # Refraining creation of Organization Group under designated OG's...
 # 
 
-$ary.each do |iii|
+$ary.each do |newog|
 
   # Converting Parent values to an internal ID on the AirWatch DB...
-  api = 'https://' + cn + '/API/system/groups/search?groupid=' + iii[9]
+  api = 'https://' + cn + '/API/system/groups/search?groupid=' + newog[9]
 
   src_org('get_cogs','Get',api) { |res| 
 
@@ -101,7 +101,7 @@ $ary.each do |iii|
   # Create a new OG by using post method...
   api = 'https://' + cn + '/API/system/groups/' + parent_og.to_s
 
-  na = [$params, iii[0..8]].transpose
+  na = [$params, newog[0..8]].transpose
   bdt = Hash[*na.flatten]
 
   cre_org('new_og', api, bdt)
