@@ -6,15 +6,23 @@ require 'json'
 # Set variables
 ##########################################
 
-cn = ''
+# REST API endpoint FQDN
+apihost = ''
+
+# Group ID on the Admin Console
 gid = ''
+
+# Account name that has access right to the API Service
 $accountname = ''
+
+# Password of obove Admin Account
 $passwd = ''
+
+# Rest API Key found on the Admin Console
 $rest_key = ''
-srch_og = ''
 
 ##########################################
-# Define a method to perform Delete or Get 
+# Define a method to perform Get 
 ##########################################
 
 def uem_req(name ,meth, api_uri)
@@ -25,10 +33,6 @@ def uem_req(name ,meth, api_uri)
 
   if meth == 'Get' 
     name = Net::HTTP::Get.new(uri.request_uri)
-  elsif meth == 'Delete'
-    name = Net::HTTP::Delete.new(uri.request_uri)
-  else
-    puts 'pls enter Get or Delete'
   end
 
   name.basic_auth($accountname, $passwd ) 
@@ -36,30 +40,23 @@ def uem_req(name ,meth, api_uri)
   name.add_field('Accept','application/json' )
 
   res = http.request(name)
-  puts res.code, res.msg
 
   yield(res)
 
 end
 
 ##########################################
-# Perform a Get and parse the response to get a specified organization group
+# Convert a Group ID to its Internal numeric ID
 ##########################################
 
-api = 'https://as' + cn + '.awmdm.com/API/system/groups/' + gid + '/children'
+api = 'https://' + apihost + '/API/system/groups/search?groupid=' + gid
 
-uem_req('get_cogs','Get',api) { |res| 
+uem_req('get_internal_id','Get',api) { |res|
 
-  ary = JSON.parse(res.body)
-  $searched_og = Hash.new()
+  body_hash = JSON.parse(res.body)
+  loc_group =  body_hash["LocationGroups"]
 
-   ary.each do |i|
-     if i.value?(srch_og) then
-       $searched_og.replace(i)
-     end
-   end
+  internalid = loc_group[0]["Id"]["Value"]
 
+  puts internalid
 }
-
-puts $searched_og
-
