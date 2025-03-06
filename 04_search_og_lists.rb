@@ -2,30 +2,52 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-# setting variables
-cn = ''
+#
+# Set variables
+#
+
+# REST API endpoint FQDN
+apihost = ''
+
+# Group ID on the Admin Console
 gid = ''
-accountname = ''
-passwd = ''
-rest_key = ''
+
+# Account name that has access right to the API Service
+$accountname = ''
+
+# Password of obove Admin Account
+$passwd = ''
+
+# Rest API Key found on the Admin Console
+$rest_key = ''
+
 srch = ''
 
+#
 # creating http request
-uri = URI.parse('https://as' + cn +'.awmdm.com/API/system/groups/' + gid + '/children')
+#
+
+uri = URI.parse('https://' + apihost + '/API/system/groups/' + gid + '/children')
 http = Net::HTTP.new(uri.host, uri.port)
 http.use_ssl = true
 
 req = Net::HTTP::Get.new(uri.request_uri)
 
-req.basic_auth(accountname, passwd ) 
-req.add_field('aw-tenant-code', rest_key )
+req.basic_auth($accountname, $passwd ) 
+req.add_field('aw-tenant-code', $rest_key )
 req.add_field('Accept','application/json' )
 
+#
 # getting response
+#
+
 res = http.request(req)
 puts res.code, res.msg
 
+#
 # parsing response
+#
+
 ary = JSON.parse(res.body)
 hash = Hash.new()
 
@@ -35,5 +57,8 @@ ary.each do |i|
   end
 end
 
+#
 # prints the parsed response
+#
+
 puts hash
