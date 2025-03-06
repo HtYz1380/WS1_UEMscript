@@ -2,9 +2,9 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-##########################################
+#
 # Set variables
-##########################################
+#
 
 # REST API endpoint FQDN
 apihost = ''
@@ -21,9 +21,9 @@ $passwd = ''
 # Rest API Key found on the Admin Console
 $rest_key = ''
 
-##########################################
+#
 # Define a method to perform Get 
-##########################################
+#
 
 def uem_req(name ,meth, api_uri)
 
@@ -45,9 +45,9 @@ def uem_req(name ,meth, api_uri)
 
 end
 
-##########################################
+#
 # Convert a Group ID to its Internal numeric ID
-##########################################
+#
 
 api = 'https://' + apihost + '/API/system/groups/search?groupid=' + gid
 

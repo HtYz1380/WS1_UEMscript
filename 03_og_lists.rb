@@ -2,7 +2,9 @@ require 'net/http'
 require 'uri'
 require 'json'
 
+
 # set variables
+
 cn = ''
 gid = ''
 accountname = ''
